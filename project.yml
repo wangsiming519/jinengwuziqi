@@ -1,0 +1,33 @@
+name: Gomoku
+options:
+  bundleIdPrefix: com.jineng.gomoku
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "15.0"
+
+targets:
+  Gomoku:
+    type: application
+    platform: iOS
+    sources:
+      - path: GomokuApp
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.jineng.gomoku
+      TARGETED_DEVICE_FAMILY: "1,2"
+      SUPPORTS_MACCATALYST: false
+    info:
+      path: GomokuApp/Info.plist
+      properties:
+        CFBundleDisplayName: 技能五子棋
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        UILaunchStoryboardName: LaunchScreen
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
