@@ -10,12 +10,16 @@
 		1EAB9D55C3F91C9D13C8CF77 /* GomokuAppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE094C5F724798ABA67F172 /* GomokuAppMain.swift */; };
 		22B9C4046BFA60BC5C5EB01A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F76523A88DDD7ACBF4D9F /* ContentView.swift */; };
 		6CBA769E9535135F7F44A95C /* GomokuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99520765570C7B3F298D3D2 /* GomokuView.swift */; };
+		B66C647A758AD8F7CEC2F523 /* SkillEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780374E24C47AC72CCDD5B38 /* SkillEffectView.swift */; };
 		BEE09C15227C3C16601218D6 /* GomokuGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC68BD92F7471EFB06DBDC7 /* GomokuGame.swift */; };
+		FD6526FA4E3B6BD2214F87FD /* SoundEffectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43617D4126E16C766E3F117C /* SoundEffectManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43617D4126E16C766E3F117C /* SoundEffectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectManager.swift; sourceTree = "<group>"; };
 		4DC68BD92F7471EFB06DBDC7 /* GomokuGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuGame.swift; sourceTree = "<group>"; };
 		6CE094C5F724798ABA67F172 /* GomokuAppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuAppMain.swift; sourceTree = "<group>"; };
+		780374E24C47AC72CCDD5B38 /* SkillEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillEffectView.swift; sourceTree = "<group>"; };
 		7AB1635A060A000D545C3E3A /* Gomoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gomoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99520765570C7B3F298D3D2 /* GomokuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuView.swift; sourceTree = "<group>"; };
 		BD92F1C985096EE309C7A684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +35,8 @@
 				4DC68BD92F7471EFB06DBDC7 /* GomokuGame.swift */,
 				B99520765570C7B3F298D3D2 /* GomokuView.swift */,
 				BD92F1C985096EE309C7A684 /* Info.plist */,
+				780374E24C47AC72CCDD5B38 /* SkillEffectView.swift */,
+				43617D4126E16C766E3F117C /* SoundEffectManager.swift */,
 			);
 			path = GomokuApp;
 			sourceTree = "<group>";
@@ -107,6 +113,8 @@
 				1EAB9D55C3F91C9D13C8CF77 /* GomokuAppMain.swift in Sources */,
 				BEE09C15227C3C16601218D6 /* GomokuGame.swift in Sources */,
 				6CBA769E9535135F7F44A95C /* GomokuView.swift in Sources */,
+				B66C647A758AD8F7CEC2F523 /* SkillEffectView.swift in Sources */,
+				FD6526FA4E3B6BD2214F87FD /* SoundEffectManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

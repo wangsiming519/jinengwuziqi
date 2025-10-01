@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 public struct GomokuView: View {
     @StateObject private var game = GomokuGame()
@@ -80,16 +81,25 @@ public struct GomokuView: View {
             HStack(spacing: 20) {
                 if game.gameMode == .normal {
                     Button("使用飞沙走石") {
-                        game.activateSkill()
+                        AudioServicesPlaySystemSound(SystemSoundID(1104)) // 按钮音
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            game.activateSkill()
+                        }
                     }
                     .disabled(!game.canUseSkill())
                     .buttonStyle(.bordered)
+                    .scaleEffect(game.gameMode == .skillSelect ? 1.1 : 1.0)
+                    .shadow(color: game.gameMode == .skillSelect ? .red : .clear, radius: 5)
                 } else {
                     Button("取消技能") {
-                        game.cancelSkill()
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            game.cancelSkill()
+                        }
                     }
                     .buttonStyle(.bordered)
                     .foregroundColor(.red)
+                    .scaleEffect(1.05)
+                    .shadow(color: .red, radius: 3)
                 }
             }
         }
@@ -108,7 +118,8 @@ struct GameBoardView: View {
                             player: game.board[row][col],
                             row: row,
                             col: col,
-                            gameMode: game.gameMode
+                            gameMode: game.gameMode,
+                            game: game
                         ) {
                             if game.gameMode == .normal {
                                 game.makeMove(row: row, col: col)
@@ -130,6 +141,7 @@ struct CellView: View {
     let row: Int
     let col: Int
     let gameMode: GameMode
+    let game: GomokuGame
     let onTap: () -> Void
     
     var body: some View {
@@ -143,6 +155,13 @@ struct CellView: View {
                 Text(player.symbol)
                     .font(.system(size: 18))
                     .foregroundColor(player == .black ? .black : .white)
+            }
+            
+            // 技能特效
+            if game.showSkillEffect,
+               let effectPos = game.skillEffectPosition,
+               effectPos.row == row && effectPos.col == col {
+                SkillEffectView()
             }
         }
         .onTapGesture {

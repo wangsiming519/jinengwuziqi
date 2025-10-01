@@ -1,4 +1,5 @@
 import Foundation
+import AVFoundation
 
 public enum Player: CaseIterable {
     case black
@@ -32,6 +33,8 @@ public class GomokuGame: ObservableObject {
     @Published public var gameMode: GameMode
     @Published public var blackSkillCount: Int
     @Published public var whiteSkillCount: Int
+    @Published public var skillEffectPosition: (row: Int, col: Int)?
+    @Published public var showSkillEffect: Bool = false
     
     public init() {
         self.board = Array(repeating: Array(repeating: nil, count: Self.boardSize), count: Self.boardSize)
@@ -40,6 +43,8 @@ public class GomokuGame: ObservableObject {
         self.gameMode = .normal
         self.blackSkillCount = 2
         self.whiteSkillCount = 2
+        self.skillEffectPosition = nil
+        self.showSkillEffect = false
     }
     
     public func makeMove(row: Int, col: Int) -> Bool {
@@ -52,9 +57,11 @@ public class GomokuGame: ObservableObject {
         }
         
         board[row][col] = currentPlayer
+        playPieceSound()
         
         if checkWin(row: row, col: col, player: currentPlayer) {
             gameState = .won(currentPlayer)
+            playWinSound()
         } else if isBoardFull() {
             gameState = .draw
         } else {
@@ -88,16 +95,30 @@ public class GomokuGame: ObservableObject {
             return false
         }
         
-        board[row][col] = nil
+        // 触发特效和音效
+        skillEffectPosition = (row: row, col: col)
+        showSkillEffect = true
+        playSkillSound()
         
-        if currentPlayer == .black {
-            blackSkillCount -= 1
-        } else {
-            whiteSkillCount -= 1
+        // 延迟移除棋子以显示特效
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.board[row][col] = nil
         }
         
-        gameMode = .normal
-        currentPlayer = currentPlayer == .black ? .white : .black
+        // 延迟结束特效和切换玩家
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.showSkillEffect = false
+            self.skillEffectPosition = nil
+            
+            if self.currentPlayer == .black {
+                self.blackSkillCount -= 1
+            } else {
+                self.whiteSkillCount -= 1
+            }
+            
+            self.gameMode = .normal
+            self.currentPlayer = self.currentPlayer == .black ? .white : .black
+        }
         
         return true
     }
@@ -121,6 +142,8 @@ public class GomokuGame: ObservableObject {
         gameMode = .normal
         blackSkillCount = 2
         whiteSkillCount = 2
+        skillEffectPosition = nil
+        showSkillEffect = false
     }
     
     private func checkWin(row: Int, col: Int, player: Player) -> Bool {
@@ -169,5 +192,24 @@ public class GomokuGame: ObservableObject {
             }
         }
         return true
+    }
+    
+    private func playSkillSound() {
+        AudioServicesPlaySystemSound(SystemSoundID(1016)) // 爆炸音
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            AudioServicesPlaySystemSound(SystemSoundID(1000)) // 点击音
+        }
+    }
+    
+    private func playPieceSound() {
+        AudioServicesPlaySystemSound(SystemSoundID(1123)) // 轻柔的点击音
+    }
+    
+    private func playWinSound() {
+        AudioServicesPlaySystemSound(SystemSoundID(1025)) // 成功音
+    }
+    
+    private func playButtonSound() {
+        AudioServicesPlaySystemSound(SystemSoundID(1104)) // 按钮音
     }
 }
