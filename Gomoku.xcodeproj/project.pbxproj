@@ -21,6 +21,7 @@
 		6CE094C5F724798ABA67F172 /* GomokuAppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuAppMain.swift; sourceTree = "<group>"; };
 		780374E24C47AC72CCDD5B38 /* SkillEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillEffectView.swift; sourceTree = "<group>"; };
 		7AB1635A060A000D545C3E3A /* Gomoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gomoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F67890A1B2C3D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B99520765570C7B3F298D3D2 /* GomokuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuView.swift; sourceTree = "<group>"; };
 		BD92F1C985096EE309C7A684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EB4F76523A88DDD7ACBF4D9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,6 +31,7 @@
 		10FE08F37C32E5DB00FE42A7 /* GomokuApp */ = {
 			isa = PBXGroup;
 			children = (
+				A1B2C3D4E5F67890A1B2C3D4 /* Assets.xcassets */,
 				EB4F76523A88DDD7ACBF4D9F /* ContentView.swift */,
 				6CE094C5F724798ABA67F172 /* GomokuAppMain.swift */,
 				4DC68BD92F7471EFB06DBDC7 /* GomokuGame.swift */,
